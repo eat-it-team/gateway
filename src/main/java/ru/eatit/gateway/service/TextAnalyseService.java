@@ -1,11 +1,12 @@
 package ru.eatit.gateway.service;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ru.eatit.gateway.controller.entity.response.TaskIdResponse;
-import ru.eatit.gateway.service.kafka.TextAnalyseKafkaProducer;
+
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class TextAnalyseService {
@@ -21,14 +22,14 @@ public class TextAnalyseService {
         this.hadoopService = hadoopService;
     }
 
-    public TaskIdResponse goTextToAnalyse(String text) {
+    public TaskIdResponse goTextToAnalyse(Set<String> keyWords) {
         try {
             String taskId = taskIdGenerator.generate();
             //признак того что ответ не пришел - null
             responseCacheService.put(taskId, null);
+            hadoopService.analyseFiles(taskId, keyWords);
             return new TaskIdResponse(taskId, 5000, null, null);
         } catch (Exception e) {
-
             return new TaskIdResponse(null, 5000, ExceptionUtils.getStackTrace(e), null);
         }
     }
@@ -40,8 +41,7 @@ public class TextAnalyseService {
                 Object response = responseCacheService.get(taskId);
                 if (response != null) { //пришел ответ из kafka
                     responseCacheService.delete(taskId);
-                    return new TaskIdResponse(taskId, 5000, null, (String) response);
-
+                    return new TaskIdResponse(taskId, 5000, null, (List<String>) response);
                 } else { //просим прийти позже
                     return new TaskIdResponse(taskId, 5000, null, null);
                 }
@@ -53,7 +53,6 @@ public class TextAnalyseService {
             return new TaskIdResponse(null, 5000, ExceptionUtils.getStackTrace(e), null);
         }
     }
-
 
 
 }
