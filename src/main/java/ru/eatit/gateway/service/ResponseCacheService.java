@@ -18,7 +18,6 @@ public class ResponseCacheService {
         return (String) cache.get(key);
     }
 
-
     public boolean contains(String key) {
         return cache.containsKey(key);
     }

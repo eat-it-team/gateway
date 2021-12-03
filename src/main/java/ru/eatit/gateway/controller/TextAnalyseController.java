@@ -16,7 +16,7 @@ public class TextAnalyseController {
         this.textAnalyseService = textAnalyseService;
     }
 
-    @PostMapping("text/analyse")
+  /*  @PostMapping("text/analyse")
     public TaskIdResponse put(@RequestBody AnalyseTextDto analyseTextDto) {
         return textAnalyseService.goTextToAnalyse(analyseTextDto.getText());
     }
@@ -24,5 +24,5 @@ public class TextAnalyseController {
     @GetMapping("text/analyse/{taskId}")
     public TaskIdResponse get(@PathVariable("taskId") String taskId) {
         return textAnalyseService.findResponse(taskId);
-    }
+    }*/
 }
