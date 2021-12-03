@@ -103,3 +103,4 @@ kubectl apply -f <path-to-kube-directory> --kubeconfig=<path-to-kube-config>
 ## Разработчики
 - Павел Колбасов @ko1bas
 - Владимир Куров @VladimirKurov
+- Алексей Родионов @rodial
