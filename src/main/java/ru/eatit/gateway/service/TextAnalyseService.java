@@ -1,40 +1,35 @@
 package ru.eatit.gateway.service;
 
 import org.apache.commons.lang3.exception.ExceptionUtils;
-import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.eatit.gateway.common.InputJSONFields;
 import ru.eatit.gateway.controller.entity.response.TaskIdResponse;
-import ru.eatit.gateway.service.kafka.TextAnalyseKafkaProducer;
+
+import java.util.List;
+import java.util.Set;
 
 @Service
 public class TextAnalyseService {
 
     private final TaskIdGenerator taskIdGenerator;
     private final ResponseCacheService responseCacheService;
-    private final TextAnalyseKafkaProducer kafkaProducer;
+    private final HadoopService hadoopService;
 
     @Autowired
-    public TextAnalyseService(TaskIdGenerator taskIdGenerator, ResponseCacheService responseCacheService, TextAnalyseKafkaProducer kafkaProducer) {
+    public TextAnalyseService(TaskIdGenerator taskIdGenerator, ResponseCacheService responseCacheService, HadoopService hadoopService) {
         this.taskIdGenerator = taskIdGenerator;
         this.responseCacheService = responseCacheService;
-        this.kafkaProducer = kafkaProducer;
+        this.hadoopService = hadoopService;
     }
 
-    public TaskIdResponse goTextToAnalyse(String text) {
+    public TaskIdResponse goTextToAnalyse(Set<String> keyWords) {
         try {
             String taskId = taskIdGenerator.generate();
             //признак того что ответ не пришел - null
             responseCacheService.put(taskId, null);
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put(InputJSONFields.TEXT, text);
-            jsonObject.put(InputJSONFields.USE_MAT_ANALYSE, true);
-            jsonObject.put(InputJSONFields.USE_EMOTION_ANALYSE, true);
-            kafkaProducer.sendMessage(taskId, jsonObject.toString());
+            hadoopService.analyseFiles(taskId, keyWords);
             return new TaskIdResponse(taskId, 5000, null, null);
         } catch (Exception e) {
-
             return new TaskIdResponse(null, 5000, ExceptionUtils.getStackTrace(e), null);
         }
     }
@@ -43,11 +38,9 @@ public class TextAnalyseService {
         try {
 
             if (responseCacheService.contains(taskId)) {
-                Object response = responseCacheService.get(taskId);
+                TaskIdResponse response = responseCacheService.get(taskId);
                 if (response != null) { //пришел ответ из kafka
-                    responseCacheService.delete(taskId);
-                    return new TaskIdResponse(taskId, 5000, null, (String) response);
-
+                    return response;
                 } else { //просим прийти позже
                     return new TaskIdResponse(taskId, 5000, null, null);
                 }
@@ -59,7 +52,6 @@ public class TextAnalyseService {
             return new TaskIdResponse(null, 5000, ExceptionUtils.getStackTrace(e), null);
         }
     }
-
 
 
 }
