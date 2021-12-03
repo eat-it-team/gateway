@@ -1,28 +1,22 @@
 package ru.eatit.gateway.service.kafka;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.kafka.core.KafkaTemplate;
+import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.LinkedBlockingDeque;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.PostConstruct;
 
 @Service
 public class TextAnalyseKafkaProducer {
+    private Map<String, Queue<Object>> kafka = new ConcurrentHashMap<>();
 
-    @Autowired
-    private KafkaTemplate<String, String> kafkaTemplate;
-
-    @Value(value = "${kafka.text_analyse.request.topicName}")
-    private String topicName;
-
-    @PostConstruct
-    public void init() {
-     //   sendMessage("custom_snils", "1234567");
-    }
-
-    public void sendMessage(String key, String value) {
-        kafkaTemplate.send(topicName, key, value);
+    public void sendMessage(String topic, Object body) {
+        if (kafka.containsKey(topic)) {
+            Queue<Object> queue = new LinkedBlockingDeque<>();
+            queue.add(body);
+            kafka.put(topic, queue);
+        } else {
+            kafka.get(topic).add(body);
+        }
     }
 }
-
