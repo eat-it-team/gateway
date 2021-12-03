@@ -1,5 +1,6 @@
 package ru.eatit.gateway.controller;
 
+import java.util.Collections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class TextAnalyseController {
             keyWords.add(result.getBody().getGiven_name());
             return textAnalyseService.goTextToAnalyse(keyWords);
         } else {
-            return textAnalyseService.findResponse(null);
+            return new TaskIdResponse(null, 0, "Unauthorized", Collections.emptyList());
         }
     }
 

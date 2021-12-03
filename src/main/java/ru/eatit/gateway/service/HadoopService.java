@@ -56,6 +56,7 @@ public class HadoopService {
         FileSystem fileSystem = getFileSystem();
         try {
             log.info("Подключились к: " + fileSystem.getUri());
+            log.info("Персона" + set);
             RemoteIterator<LocatedFileStatus> iterator = null;
             iterator = fileSystem.listFiles(new Path("/user/team14/input"), false);
             while (iterator.hasNext()) {
@@ -63,15 +64,15 @@ public class HadoopService {
                 if (file.getName().toLowerCase().endsWith("html")) {
                     for (String word : set) {
                         if (file.getName().contains(word)) {
+                            log.info(file.getName());
                             result.add(file.getName());
+                            break;
                         }
-                        break;
                     }
                 }
-                log.info(file.toString());
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("IO ", e);
         } finally {
             try {
                 if (fileSystem != null) {

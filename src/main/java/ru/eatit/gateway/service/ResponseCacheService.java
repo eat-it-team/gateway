@@ -4,17 +4,18 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
+import ru.eatit.gateway.controller.entity.response.TaskIdResponse;
 
 @Service
 public class ResponseCacheService {
 
-    private final Map<String, Object> cache = new HashMap<>();
+    private final Map<String, TaskIdResponse> cache = new HashMap<>();
 
-    public void put(String key, Object value) {
+    public void put(String key, TaskIdResponse value) {
         cache.put(key, value);
     }
 
-    public Object get(String key) {
+    public TaskIdResponse get(String key) {
         return  cache.get(key);
     }
 

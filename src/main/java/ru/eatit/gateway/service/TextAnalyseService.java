@@ -38,10 +38,9 @@ public class TextAnalyseService {
         try {
 
             if (responseCacheService.contains(taskId)) {
-                Object response = responseCacheService.get(taskId);
+                TaskIdResponse response = responseCacheService.get(taskId);
                 if (response != null) { //пришел ответ из kafka
-                    responseCacheService.delete(taskId);
-                    return new TaskIdResponse(taskId, 5000, null, (List<String>) response);
+                    return response;
                 } else { //просим прийти позже
                     return new TaskIdResponse(taskId, 5000, null, null);
                 }
