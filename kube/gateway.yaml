@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: app
-          image: vladimirkurovx5/digital-twin-gateway:1.0.0
+          image: vladimirkurovx5/digital-twin-gateway:1.0.1
           ports:
             - containerPort: 8080
           resources:
