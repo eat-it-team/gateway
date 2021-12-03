@@ -25,6 +25,7 @@ public class TextAnalyseController {
     }
 
     @PostMapping("text/analyse")
+    @CrossOrigin
     public TaskIdResponse put(@RequestHeader("Authorization") String accessToken) {
         ResponseEntity<TvsUserDto> result = tvsService.findUser(accessToken);
         if (result.getStatusCode().is2xxSuccessful()) {
@@ -38,6 +39,7 @@ public class TextAnalyseController {
     }
 
     @GetMapping("text/analyse/{taskId}")
+    @CrossOrigin
     public TaskIdResponse get(@PathVariable("taskId") String taskId) {
         return textAnalyseService.findResponse(taskId);
     }

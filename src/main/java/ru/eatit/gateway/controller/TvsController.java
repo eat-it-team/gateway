@@ -3,6 +3,7 @@ package ru.eatit.gateway.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class TvsController {
     private final TvsService tvsService;
 
     @GetMapping("user")
+    @CrossOrigin
     public ResponseEntity<TvsUserDto> findUser(@RequestHeader("Authorization") String accessToken) {
         log.info(accessToken);
         ResponseEntity<TvsUserDto> result = tvsService.findUser(accessToken);

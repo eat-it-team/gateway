@@ -1,0 +1,230 @@
+{
+	"info": {
+		"_postman_id": "3f451aa2-fb6d-46f6-8a21-113eebb420ed",
+		"name": "DigitalTwin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Анализ текста Резульат",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKUHl0M0dORnB0UUl0QXNubEZpUnhjZVMyQ2t3OTRObzNac2Z0VjJiWHdVIn0.eyJqdGkiOiI1NzAyMWJmMi01NzQ4LTQxZTMtOThlZi0xYjMzNzAzMGJjOTUiLCJleHAiOjE2Mzg1OTMxODIsIm5iZiI6MCwiaWF0IjoxNjM4NTU3MTgyLCJpc3MiOiJodHRwczovL3R2c2NwLnRpb25peC5ydS9yZWFsbXMvbWFzdGVyIiwiYXVkIjoidHZzY3AiLCJzdWIiOiI1ZTBjMzQ2NS04Mjg4LTRjYjAtOGE2My05NDFjOWU0NDJmZTciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ0dnNjcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjJmZGI4MjFjLWE2NWYtNGQxOC05ZWZjLTI0OTIyYTM2YTBlMSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCIsImNsaWVudEhvc3QiOiI1LjEwMS4yMy42OCIsImNsaWVudElkIjoidHZzY3AiLCJjbGllbnRBZGRyZXNzIjoiNS4xMDEuMjMuNjgiLCJ1c2VybmFtZSI6ImR1ZCJ9.F6OX7YbppVEVRe-Xsii-uqx9NbSuJ0t8vYczgtcHkk5MFnYKYKicYIK47OgOiYd3d2mUS-mFlUDpzewu-FLSjvfWK8UVngOSSrnAVx6jNXKe3omJtjqU1sCyAeKIyME3A95FjobP7wZq3flXU8b64I4Kb0ni9nhSU8ZkGGIi_9at_xfvd29xafcjbWXdQIIkdjLp5JZcxG_2XGeJrKBpDwzqxfFZwo9wJ-dBzzhFzuAam7QeUYZ6PoCkVit2NiKMcxeujgYyI1j_ljT6kpBoMp7i4AP2v1lMaF06PN7aQZhnCw68wKrw4pQRJ-k4ql9nPD1EayhZjgQPRO7k-EkzXA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "tvscp",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "f3e94369-53ac-43d5-842e-09fe6d8a71ff",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "team14",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "oenooxiejo",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "45.134.255.154:30007/text/analyse/f0e38b61b0684e83926c23883e5a947d",
+					"host": [
+						"45",
+						"134",
+						"255",
+						"154"
+					],
+					"port": "30007",
+					"path": [
+						"text",
+						"analyse",
+						"f0e38b61b0684e83926c23883e5a947d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Анализ текста",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKUHl0M0dORnB0UUl0QXNubEZpUnhjZVMyQ2t3OTRObzNac2Z0VjJiWHdVIn0.eyJqdGkiOiI1NzAyMWJmMi01NzQ4LTQxZTMtOThlZi0xYjMzNzAzMGJjOTUiLCJleHAiOjE2Mzg1OTMxODIsIm5iZiI6MCwiaWF0IjoxNjM4NTU3MTgyLCJpc3MiOiJodHRwczovL3R2c2NwLnRpb25peC5ydS9yZWFsbXMvbWFzdGVyIiwiYXVkIjoidHZzY3AiLCJzdWIiOiI1ZTBjMzQ2NS04Mjg4LTRjYjAtOGE2My05NDFjOWU0NDJmZTciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ0dnNjcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjJmZGI4MjFjLWE2NWYtNGQxOC05ZWZjLTI0OTIyYTM2YTBlMSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCIsImNsaWVudEhvc3QiOiI1LjEwMS4yMy42OCIsImNsaWVudElkIjoidHZzY3AiLCJjbGllbnRBZGRyZXNzIjoiNS4xMDEuMjMuNjgiLCJ1c2VybmFtZSI6ImR1ZCJ9.F6OX7YbppVEVRe-Xsii-uqx9NbSuJ0t8vYczgtcHkk5MFnYKYKicYIK47OgOiYd3d2mUS-mFlUDpzewu-FLSjvfWK8UVngOSSrnAVx6jNXKe3omJtjqU1sCyAeKIyME3A95FjobP7wZq3flXU8b64I4Kb0ni9nhSU8ZkGGIi_9at_xfvd29xafcjbWXdQIIkdjLp5JZcxG_2XGeJrKBpDwzqxfFZwo9wJ-dBzzhFzuAam7QeUYZ6PoCkVit2NiKMcxeujgYyI1j_ljT6kpBoMp7i4AP2v1lMaF06PN7aQZhnCw68wKrw4pQRJ-k4ql9nPD1EayhZjgQPRO7k-EkzXA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "tvscp",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "f3e94369-53ac-43d5-842e-09fe6d8a71ff",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "team14",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "oenooxiejo",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "45.134.255.154:30007/text/analyse/f0e38b61b0684e83926c23883e5a947d",
+					"host": [
+						"45",
+						"134",
+						"255",
+						"154"
+					],
+					"port": "30007",
+					"path": [
+						"text",
+						"analyse",
+						"f0e38b61b0684e83926c23883e5a947d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Авторизация",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJKUHl0M0dORnB0UUl0QXNubEZpUnhjZVMyQ2t3OTRObzNac2Z0VjJiWHdVIn0.eyJqdGkiOiI1NzAyMWJmMi01NzQ4LTQxZTMtOThlZi0xYjMzNzAzMGJjOTUiLCJleHAiOjE2Mzg1OTMxODIsIm5iZiI6MCwiaWF0IjoxNjM4NTU3MTgyLCJpc3MiOiJodHRwczovL3R2c2NwLnRpb25peC5ydS9yZWFsbXMvbWFzdGVyIiwiYXVkIjoidHZzY3AiLCJzdWIiOiI1ZTBjMzQ2NS04Mjg4LTRjYjAtOGE2My05NDFjOWU0NDJmZTciLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ0dnNjcCIsImF1dGhfdGltZSI6MCwic2Vzc2lvbl9zdGF0ZSI6IjJmZGI4MjFjLWE2NWYtNGQxOC05ZWZjLTI0OTIyYTM2YTBlMSIsImFjciI6IjEiLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6Im9wZW5pZCIsImNsaWVudEhvc3QiOiI1LjEwMS4yMy42OCIsImNsaWVudElkIjoidHZzY3AiLCJjbGllbnRBZGRyZXNzIjoiNS4xMDEuMjMuNjgiLCJ1c2VybmFtZSI6ImR1ZCJ9.F6OX7YbppVEVRe-Xsii-uqx9NbSuJ0t8vYczgtcHkk5MFnYKYKicYIK47OgOiYd3d2mUS-mFlUDpzewu-FLSjvfWK8UVngOSSrnAVx6jNXKe3omJtjqU1sCyAeKIyME3A95FjobP7wZq3flXU8b64I4Kb0ni9nhSU8ZkGGIi_9at_xfvd29xafcjbWXdQIIkdjLp5JZcxG_2XGeJrKBpDwzqxfFZwo9wJ-dBzzhFzuAam7QeUYZ6PoCkVit2NiKMcxeujgYyI1j_ljT6kpBoMp7i4AP2v1lMaF06PN7aQZhnCw68wKrw4pQRJ-k4ql9nPD1EayhZjgQPRO7k-EkzXA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "45.134.255.154:30007/tvs/user",
+					"host": [
+						"45",
+						"134",
+						"255",
+						"154"
+					],
+					"port": "30007",
+					"path": [
+						"tvs",
+						"user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение токена type=password",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "client_id",
+							"value": "tvscp",
+							"type": "text"
+						},
+						{
+							"key": "client_secret",
+							"value": "f3e94369-53ac-43d5-842e-09fe6d8a71ff",
+							"type": "text"
+						},
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "team14",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "oenooxiejo",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://tvscp.tionix.ru/realms/master/protocol/openid-connect/token",
+					"protocol": "https",
+					"host": [
+						"tvscp",
+						"tionix",
+						"ru"
+					],
+					"path": [
+						"realms",
+						"master",
+						"protocol",
+						"openid-connect",
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
