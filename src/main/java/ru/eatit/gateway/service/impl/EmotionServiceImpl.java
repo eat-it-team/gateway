@@ -30,6 +30,7 @@ import java.security.cert.X509Certificate;
  * Возможные кейсы использоваения:
  * Проверяем наличие ключевого слова и эмоиональную окраску, тем самым можем узнать
  * отношение челвека к этому слову.
+ *
  */
 public class EmotionServiceImpl implements EmotionService {
     private String api_key = "YwPwLsK0dxQ57HeTTh9R24hAWn6UanDNDxmtCkiKkC0";
