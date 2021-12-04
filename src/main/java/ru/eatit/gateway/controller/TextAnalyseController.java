@@ -1,6 +1,7 @@
 package ru.eatit.gateway.controller;
 
 import java.util.Collections;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @RestController
+@Slf4j
 public class TextAnalyseController {
 
     private final TextAnalyseService textAnalyseService;
@@ -25,8 +27,8 @@ public class TextAnalyseController {
     }
 
     @PostMapping("text/analyse")
-    @CrossOrigin
     public TaskIdResponse put(@RequestHeader("Authorization") String accessToken) {
+        log.info("Request analyse: " + accessToken);
         ResponseEntity<TvsUserDto> result = tvsService.findUser(accessToken);
         if (result.getStatusCode().is2xxSuccessful()) {
             Set<String> keyWords = new HashSet<>();
@@ -39,8 +41,8 @@ public class TextAnalyseController {
     }
 
     @GetMapping("text/analyse/{taskId}")
-    @CrossOrigin
     public TaskIdResponse get(@PathVariable("taskId") String taskId) {
+        log.info("Request result " + taskId);
         return textAnalyseService.findResponse(taskId);
     }
 }

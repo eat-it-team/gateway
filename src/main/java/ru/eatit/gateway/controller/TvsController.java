@@ -19,7 +19,6 @@ public class TvsController {
     private final TvsService tvsService;
 
     @GetMapping("user")
-    @CrossOrigin
     public ResponseEntity<TvsUserDto> findUser(@RequestHeader("Authorization") String accessToken) {
         log.info(accessToken);
         ResponseEntity<TvsUserDto> result = tvsService.findUser(accessToken);
